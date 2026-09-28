@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Task domain model.
- *
+ * <p>
  * Task bir User-ə aiddir (userId vasitəsilə).
  * createdAt / updatedAt audit sahələridir.
  */
@@ -17,6 +17,7 @@ public class Task {
     private TaskStatus status;
     private Priority priority;
     private Long userId;
+    private Long categoryId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -24,13 +25,14 @@ public class Task {
     }
 
     public Task(Long id, String title, String description,
-                TaskStatus status, Priority priority, Long userId) {
+                TaskStatus status, Priority priority, Long userId, Long categoryId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
         this.priority = priority;
         this.userId = userId;
+        this.categoryId = categoryId;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = this.createdAt;
     }
@@ -79,8 +81,16 @@ public class Task {
         return userId;
     }
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public LocalDateTime getCreatedAt() {
