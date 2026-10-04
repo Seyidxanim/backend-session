@@ -36,6 +36,10 @@ public class Task {
         this.updatedAt = this.createdAt;
     }
 
+    public static Builder builder(){
+        return new Builder();
+    }
+
     public static class Builder {
         private Long id;
         private String title;
@@ -45,16 +49,6 @@ public class Task {
         private Long userId;
         private Long categoryId;
 
-
-        Builder(Long id, String title, String description, TaskStatus status, Priority priority, Long userId, Long categoryId) {
-            this.id = id;
-            this.title = title;
-            this.description = description;
-            this.status = status;
-            this.priority = priority;
-            this.userId = userId;
-            this.categoryId = categoryId;
-        }
 
         public Builder id(Long id) {
             this.id = id;
