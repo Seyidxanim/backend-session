@@ -48,11 +48,11 @@ public class Main {
 
         // CREATE tasks
         Task t1 = taskService.createTask("Backend syllabus hazırla",
-                "8 dərslik plan", Priority.HIGH, darya.getId(), study.getId());
+                "8 dərslik plan", Priority.HIGH, darya.getId(), study.id());
         Task t2 = taskService.createTask("Repository nümunəsi yaz",
-                "In-memory CRUD", Priority.MEDIUM, darya.getId(), work.getId());
+                "In-memory CRUD", Priority.MEDIUM, darya.getId(), work.id());
         Task t3 = taskService.createTask("Java essentials təkrar et",
-                null, Priority.LOW, ali.getId(), study.getId());
+                null, Priority.LOW, ali.getId(), study.id());
         System.out.println("\nYaradılan task-lar:");
         taskService.getAllTasks().forEach(t -> System.out.println("  " + t));
 
@@ -96,7 +96,7 @@ public class Main {
                     "Test description",
                     Priority.MEDIUM,
                     darya.getId(),
-                    study.getId()
+                    study.id()
             );
         } catch (InvalidTaskException e) {
             System.out.println(
@@ -124,7 +124,7 @@ public class Main {
                     "Test",
                     Priority.MEDIUM,
                     999L,
-                    study.getId()
+                    study.id()
             );
         } catch (UserNotFoundException e) {
             System.out.println(

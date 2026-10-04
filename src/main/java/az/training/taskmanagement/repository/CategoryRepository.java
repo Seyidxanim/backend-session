@@ -2,7 +2,11 @@ package az.training.taskmanagement.repository;
 
 import az.training.taskmanagement.model.Category;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -11,10 +15,10 @@ public class CategoryRepository {
     private final AtomicLong sequence = new AtomicLong(0);
 
     public Category save(Category category) {
-        if (category.getId() == null) {
-            category.setId(sequence.incrementAndGet());
+        if (category.id() == null) {
+            category=new Category(sequence.incrementAndGet(), category.name());
         }
-        storage.put(category.getId(), category);
+        storage.put(category.id(), category);
         return category;
     }
 

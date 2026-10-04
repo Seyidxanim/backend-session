@@ -45,14 +45,9 @@ public class TaskRepository {
     }
 
     public List<Task> findByStatus(TaskStatus taskStatus) {
-        List<Task> result = new ArrayList<>();
-
-        for (Task task : storage.values()) {
-            if (task.getStatus() == taskStatus) {
-                result.add(task);
-            }
-        }
-        return result;
+        return storage.values().stream()
+                .filter(t -> t.getStatus() == taskStatus)
+                .toList();
     }
 
     public void deleteById(Long id) {
